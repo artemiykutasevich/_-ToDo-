@@ -9,11 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationView {
-            TasksView()
-                .navigationTitle("Task Manager")
-                .navigationBarTitleDisplayMode(.inline)
-        }
+        TasksView()
     }
 }
 

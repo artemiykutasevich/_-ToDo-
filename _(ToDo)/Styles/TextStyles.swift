@@ -11,6 +11,7 @@ struct TitleStyleModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(Fonts.permanentMarker)
+            .foregroundColor(BackgroundColors.blackColor)
     }
 }
 
@@ -37,7 +38,7 @@ extension Text {
         self.modifier(TitleStyleModifier())
     }
     
-    func calloutStyle(color: Color = Color(BackgroundColors.black.rawValue)) -> some View {
+    func calloutStyle(color: Color = BackgroundColors.blackColor) -> some View {
         self.modifier(CalloutStyleModifier(color: color))
     }
     

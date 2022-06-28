@@ -14,6 +14,8 @@
 		B80BEF252868645100DF04D4 /* __ToDo_.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B80BEF232868645100DF04D4 /* __ToDo_.xcdatamodeld */; };
 		B82A980C2869DB78003AB9F4 /* PermanentMarker-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B82A980B2869DB78003AB9F4 /* PermanentMarker-Regular.ttf */; };
 		B82A98102869E444003AB9F4 /* ImageStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82A980F2869E444003AB9F4 /* ImageStyles.swift */; };
+		B84BDD94286B4F91002C9043 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84BDD93286B4F91002C9043 /* SettingsView.swift */; };
+		B84BDD97286B5158002C9043 /* SymbolButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84BDD96286B5158002C9043 /* SymbolButton.swift */; };
 		B8580A962868C9E600A94091 /* CardColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8580A952868C9E600A94091 /* CardColors.swift */; };
 		B8581B232869D10A00A5F583 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8581B222869D10A00A5F583 /* TextStyles.swift */; };
 		B8581B2C2869D4E200A5F583 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8581B2B2869D4E200A5F583 /* Fonts.swift */; };
@@ -34,6 +36,8 @@
 		B80BEF242868645100DF04D4 /* __ToDo_.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = __ToDo_.xcdatamodel; sourceTree = "<group>"; };
 		B82A980B2869DB78003AB9F4 /* PermanentMarker-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PermanentMarker-Regular.ttf"; sourceTree = "<group>"; };
 		B82A980F2869E444003AB9F4 /* ImageStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStyles.swift; sourceTree = "<group>"; };
+		B84BDD93286B4F91002C9043 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B84BDD96286B5158002C9043 /* SymbolButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolButton.swift; sourceTree = "<group>"; };
 		B8580A952868C9E600A94091 /* CardColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardColors.swift; sourceTree = "<group>"; };
 		B8581B222869D10A00A5F583 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
 		B8581B2A2869D48D00A5F583 /* --ToDo--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "--ToDo--Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -82,6 +86,7 @@
 				B866F8D42868949C00D50470 /* Views */,
 				B866F8D5286894A600D50470 /* ViewModels */,
 				B866F8DA2868960A00D50470 /* Models */,
+				B84BDD95286B50E6002C9043 /* Components */,
 				B8580A942868C9DA00A94091 /* Styles */,
 				B8581B212869C92200A5F583 /* SupportFiles */,
 				B80BEF1C2868645100DF04D4 /* Assets.xcassets */,
@@ -98,6 +103,14 @@
 				B80BEF1F2868645100DF04D4 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B84BDD95286B50E6002C9043 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B84BDD96286B5158002C9043 /* SymbolButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		B8580A942868C9DA00A94091 /* Styles */ = {
@@ -141,6 +154,7 @@
 			children = (
 				B866F8D6286894F900D50470 /* TasksView.swift */,
 				B866F8E52868B6BA00D50470 /* CreateTaskView.swift */,
+				B84BDD93286B4F91002C9043 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -247,12 +261,14 @@
 				B866F8E128689D0700D50470 /* ContentView.swift in Sources */,
 				B8581B2C2869D4E200A5F583 /* Fonts.swift in Sources */,
 				B80BEF192868644F00DF04D4 /* __ToDo_App.swift in Sources */,
+				B84BDD94286B4F91002C9043 /* SettingsView.swift in Sources */,
 				B80BEF252868645100DF04D4 /* __ToDo_.xcdatamodeld in Sources */,
 				B866F8E62868B6BA00D50470 /* CreateTaskView.swift in Sources */,
 				B8580A962868C9E600A94091 /* CardColors.swift in Sources */,
 				B8C0694F2869BB7B0050C3BB /* BackgroundColors.swift in Sources */,
 				B866F8D7286894F900D50470 /* TasksView.swift in Sources */,
 				B866F8DE286899F400D50470 /* TaskPriority.swift in Sources */,
+				B84BDD97286B5158002C9043 /* SymbolButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

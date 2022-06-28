@@ -5,8 +5,10 @@
 //  Created by Artem Kutasevich on 27.06.22.
 //
 
-import Foundation
+import SwiftUI
 
 enum BackgroundColors: String, CaseIterable {
     case black = "Black"
+    
+    static let blackColor = Color(black.rawValue)
 }

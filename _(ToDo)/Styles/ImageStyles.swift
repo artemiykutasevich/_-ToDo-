@@ -18,7 +18,7 @@ struct SymbolsStyleModifier: ViewModifier {
 }
 
 extension Image {
-    func symbolStyle(color: Color = Color(BackgroundColors.black.rawValue)) -> some View {
+    func symbolStyle(color: Color = BackgroundColors.blackColor) -> some View {
         self.modifier(SymbolsStyleModifier(color: color))
     }
 }

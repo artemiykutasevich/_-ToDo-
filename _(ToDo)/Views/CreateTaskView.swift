@@ -20,25 +20,25 @@ struct CreateTaskView: View {
                 .titleStyle()
                 .frame(maxWidth: .infinity)
                 .overlay(alignment: .leading) {
-                    Button(action: {
-                        viewModel.editTask = nil
-                        enviroment.dismiss()
-                    }, label: {
-                        Image(systemName: "arrow.left")
-                            .symbolStyle()
-                    })
+                    SymbolButton(
+                        symbolName: "arrow.left",
+                        symbolColor: BackgroundColors.blackColor,
+                        function: {
+                            viewModel.editTask = nil
+                            enviroment.dismiss()
+                        })
                 }
                 .overlay(alignment: .trailing) {
                     if let editTask = viewModel.editTask {
-                        Button(action: {
-                            enviroment.managedObjectContext.delete(editTask)
-                            try? enviroment.managedObjectContext.save()
-                            enviroment.dismiss()
-                            viewModel.editTask = nil
-                        }, label: {
-                            Image(systemName: "trash")
-                                .symbolStyle(color: .red)
-                        })
+                        SymbolButton(
+                            symbolName: "trash",
+                            symbolColor: .red,
+                            function: {
+                                enviroment.managedObjectContext.delete(editTask)
+                                try? enviroment.managedObjectContext.save()
+                                enviroment.dismiss()
+                                viewModel.editTask = nil
+                            })
                     }
                 }
             
@@ -87,12 +87,12 @@ struct CreateTaskView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .overlay(alignment: .bottomTrailing) {
-                    Button(action: {
-                        viewModel.showingDatePicker.toggle()
-                    }, label: {
-                        Image(systemName: "calendar")
-                            .symbolStyle()
-                    })
+                    SymbolButton(
+                        symbolName: "calendar",
+                        symbolColor: BackgroundColors.blackColor,
+                        function: {
+                            viewModel.showingDatePicker.toggle()
+                        })
                 }
                 .padding()
                 
@@ -127,13 +127,13 @@ struct CreateTaskView: View {
                     HStack {
                         ForEach(TaskPriority.allCases, id: \.self) { type in
                             Text(type.rawValue)
-                                .calloutStyle(color: viewModel.taskType == type ? .white : Color(BackgroundColors.black.rawValue))
+                                .calloutStyle(color: viewModel.taskType == type ? .white : BackgroundColors.blackColor)
                                 .padding(.vertical, 8)
                                 .frame(maxWidth: .infinity)
                                 .background {
                                     if viewModel.taskType == type {
                                         Capsule()
-                                            .fill(Color(BackgroundColors.black.rawValue))
+                                            .fill(BackgroundColors.blackColor)
                                             .matchedGeometryEffect(id: "TYPE", in: animation)
                                     } else {
                                         Capsule()
@@ -161,7 +161,6 @@ struct CreateTaskView: View {
                 }, label: {
                     Text("Save Task")
                         .calloutStyle(color: .white)
-                        .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background {

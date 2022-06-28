@@ -27,13 +27,24 @@ struct TasksView: View {
     var body: some View {
         ScrollView {
             VStack {
-                VStack(alignment: .leading) {
-                    Text("Welcome back")
-                        .font(.callout)
-                    Text("Today's plan")
-                        .titleStyle()
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("Welcome back")
+                            .calloutStyle()
+                        Text("Today's plan")
+                            .titleStyle()
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        viewModel.openSettings.toggle()
+                    }, label: {
+                        Image(systemName: "gearshape.fill")
+                            .symbolStyle()
+                    })
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
                 
                 TaskView()
             }
@@ -45,20 +56,23 @@ struct TasksView: View {
             }, label: {
                 Label {
                     Text("Add task")
-                        .font(.callout)
-                        .fontWeight(.semibold)
+                        .calloutStyle(color: .white)
                 } icon: {
                     Image(systemName: "plus.app.fill")
                 }
                 .foregroundColor(.white)
                 .padding()
-                .background(Color(BackgroundColors.black.rawValue), in: Capsule())
+                .background(BackgroundColors.blackColor, in: Capsule())
             })
         }
         .fullScreenCover(isPresented: $viewModel.openEditTask) {
             viewModel.resetTaskData()
         } content: {
             CreateTaskView()
+                .environmentObject(viewModel)
+        }
+        .fullScreenCover(isPresented: $viewModel.openSettings) {
+            SettingsView()
                 .environmentObject(viewModel)
         }
     }
@@ -72,7 +86,6 @@ struct TasksView: View {
                 TaskRowView(task: task)
             }
         }
-        .padding()
     }
     
     // MARK: - TaskRowView
@@ -81,14 +94,18 @@ struct TasksView: View {
     func TaskRowView(task: Task) -> some View {
         VStack(alignment: .leading) {
             HStack {
-                Text(task.priority ?? "")
-                    .font(.callout)
-                    .padding(8)
-                    .padding(.horizontal)
-                    .background {
-                        Capsule()
-                            .fill(.white.opacity(0.3))
-                    }
+                HStack {
+                    Text(task.priority ?? "")
+                        .calloutStyle()
+                        .padding(.horizontal)
+                    
+                    Text(task.title ?? "")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .lineLimit(1)
+                }
+                .padding(.bottom, 6)
                 
                 Spacer()
                 
@@ -98,14 +115,10 @@ struct TasksView: View {
                     viewModel.setupTask()
                 }, label: {
                     Image(systemName: "square.and.pencil")
-                        .foregroundColor(Color(BackgroundColors.black.rawValue))
+                        .foregroundColor(BackgroundColors.blackColor)
                 })
             }
-            
-            Text(task.title ?? "")
-                .font(.title2)
-                .fontWeight(.bold)
-                .padding(.vertical)
+            .padding(.bottom)
             
             HStack(alignment: .bottom, spacing: 0) {
                 VStack(alignment: .leading) {
@@ -125,17 +138,13 @@ struct TasksView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
-                if !task.isDone {
-                    Button(action: {
-                        task.isDone.toggle()
-                        try? enviroment.managedObjectContext.save()
-                    }, label: {
-                        Circle()
-                            .stroke(Color(BackgroundColors.black.rawValue))
-                            .frame(width: 25, height: 25)
-                            .contentShape(Circle())
-                    })
-                }
+                Button(action: {
+                    task.isDone.toggle()
+                    try? enviroment.managedObjectContext.save()
+                }, label: {
+                    Image(systemName: task.isDone ? "checkmark.circle.fill" : "circle")
+                        .symbolStyle(color: task.isDone ? Color(CardColors.green.rawValue) : .black)
+                })
             }
         }
         .padding()

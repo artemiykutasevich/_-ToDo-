@@ -18,6 +18,8 @@ class TasksViewModel: ObservableObject {
     @Published var taskDeadline: Date = Date()
     @Published var taskType: TaskPriority = .medium
     
+    @Published var openSettings: Bool = false
+    
     func addTask(context: NSManagedObjectContext) -> Bool {
         var task: Task!
         
