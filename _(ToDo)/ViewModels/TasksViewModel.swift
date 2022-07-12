@@ -9,6 +9,9 @@ import SwiftUI
 import CoreData
 
 class TasksViewModel: ObservableObject {
+    
+    // MARK: Properties
+    
     @Published var openEditTask: Bool = false
     @Published var showingDatePicker: Bool = false
     @Published var editTask: Task?
@@ -20,6 +23,8 @@ class TasksViewModel: ObservableObject {
     @Published var taskType: TaskPriority = .medium
     
     @Published var openSettings: Bool = false
+    
+    // MARK: Functions
     
     func addTask(context: NSManagedObjectContext) -> Bool {
         var task: Task!
