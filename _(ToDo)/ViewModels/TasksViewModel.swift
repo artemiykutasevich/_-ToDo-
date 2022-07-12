@@ -14,6 +14,7 @@ class TasksViewModel: ObservableObject {
     @Published var editTask: Task?
     
     @Published var taskTitle: String = ""
+    @Published var taskDescription: String = ""
     @Published var taskColor: CardColors = .blue
     @Published var taskDeadline: Date = Date()
     @Published var taskType: TaskPriority = .medium
@@ -30,6 +31,7 @@ class TasksViewModel: ObservableObject {
         }
         
         task.title = taskTitle
+        task.body = taskDescription
         task.color = taskColor.rawValue
         task.deadline = taskDeadline
         task.priority = taskType.rawValue
@@ -43,6 +45,7 @@ class TasksViewModel: ObservableObject {
     
     func resetTaskData() {
         taskTitle = ""
+        taskDescription = ""
         taskColor = .blue
         taskType = .medium
         taskDeadline = Date()
@@ -51,6 +54,7 @@ class TasksViewModel: ObservableObject {
     func setupTask() {
         if let editTask = editTask {
             taskTitle = editTask.title ?? ""
+            taskDescription = editTask.body ?? ""
             taskColor = CardColors.getCardColor(from: editTask.color ?? "")
             taskType = TaskPriority.getTaskPriority(from: editTask.priority ?? "")
             taskDeadline = editTask.deadline ?? Date()

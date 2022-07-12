@@ -105,7 +105,6 @@ struct TasksView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .lineLimit(1)
                 }
-                .padding(.bottom, 6)
                 
                 Spacer()
                 
@@ -118,7 +117,15 @@ struct TasksView: View {
                         .foregroundColor(BackgroundColors.blackColor)
                 })
             }
-            .padding(.bottom)
+            .padding(.bottom, 6)
+            
+            if let taskDescription = task.body {
+                if taskDescription != "" {
+                    Text(taskDescription)
+                        .calloutStyle()
+                        .padding(.bottom, 6)
+                }
+            }
             
             HStack(alignment: .bottom, spacing: 0) {
                 VStack(alignment: .leading) {

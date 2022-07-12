@@ -116,6 +116,23 @@ struct CreateTaskView: View {
                 Divider()
             }
             
+            // MARK: Task Description
+            
+            Group {
+                VStack(alignment: .leading) {
+                    Text("Task Description")
+                        .captionStyle()
+                        .padding(.bottom, 6)
+                    
+                    TextField("", text: $viewModel.taskDescription)
+                        .frame(maxWidth: .infinity)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding()
+                
+                Divider()
+            }
+            
             // MARK: Task Type
             
             Group {
